@@ -68,7 +68,7 @@ MatrixXd ARAP_deformation(const MatrixXd& origV,
         //Local step: for existing currVertices and original positions origVertices, find the best fitting local one-ring-based rotation matrices R
         for (int j=0;j<origV.rows();j++){
             MatrixXd P(oneRings[j].size(),3), Q(oneRings[j].size(),3);
-            Matrix3d S;
+            Matrix3d S = Matrix3d::Zero();
             for (int k=0;k<oneRings[j].size();k++){
                 P.row(k) = origV.row(oneRings[j][k]) - origV.row(j);
                 Q.row(k) = currV.row(oneRings[j][k]) - currV.row(j);
